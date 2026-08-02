@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ömər Babayev — Full-stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #090c10;
+    --surface: #10151c;
+    --surface-2: #151b24;
+    --border: #212933;
+    --border-soft: #1a212a;
+    --text: #e7edf4;
+    --text-dim: #8b94a3;
+    --text-faint: #576070;
+    --amber: #e9a23b;
+    --amber-dim: #7a5b26;
+    --cyan: #5fb8de;
+    --green: #4fd68c;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --radius: 3px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(233,162,59,0.05), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(95,184,222,0.04), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:#0a0c0f;}
+  a{color:inherit;text-decoration:none;}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+
+  .wrap{max-width:840px;margin:0 auto;padding:0 24px;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(9,12,16,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:16px 24px;max-width:840px;margin:0 auto;
+  }
+  .logo{
+    font-family:var(--mono);font-weight:700;font-size:14px;color:var(--text);
+    display:flex;align-items:center;gap:8px;white-space:nowrap;
+  }
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 8px var(--green);animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .nav-right{display:flex;align-items:center;gap:22px;}
+  .navlinks{display:flex;gap:28px;font-family:var(--mono);font-size:12.5px;color:var(--text-dim);}
+  .navlinks a{position:relative;padding:4px 0;transition:color .15s;}
+  .navlinks a:hover{color:var(--amber);}
+  .navlinks a::before{content:'./';color:var(--text-faint);}
+  .lang-switch{
+    display:flex;align-items:center;gap:2px;
+    border:1px solid var(--border);border-radius:var(--radius);padding:2px;
+    background:rgba(16,21,28,.8);
+  }
+  .lang-btn{
+    appearance:none;border:0;background:transparent;color:var(--text-faint);
+    font-family:var(--mono);font-size:11px;font-weight:700;line-height:1;
+    padding:7px 8px;border-radius:2px;cursor:pointer;
+    transition:background .15s,color .15s;
+  }
+  .lang-btn:hover{color:var(--text);}
+  .lang-btn.active{background:var(--amber);color:#0d0a06;}
+
+  .hero{padding:72px 0 56px;}
+  .term{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;border-bottom:1px solid var(--border-soft);
+    background:var(--surface-2);
+  }
+  .term-bar span{width:10px;height:10px;border-radius:50%;background:#2a323d;}
+  .term-bar .title{
+    width:auto;height:auto;border-radius:0;background:transparent;
+    margin-left:8px;font-family:var(--mono);font-size:11.5px;color:var(--text-faint);
+  }
+  .term-body{padding:24px 22px 28px;font-family:var(--mono);font-size:13.5px;}
+  .line{margin-bottom:6px;color:var(--text-dim);}
+  .prompt{color:var(--green);}
+  .path{color:var(--cyan);}
+  .cmd{color:var(--text);}
+  .out{color:var(--text-dim);padding-left:0;margin:2px 0 16px;}
+  .out b{color:var(--text);font-weight:600;}
+  .out .amber{color:var(--amber);}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);
+    vertical-align:text-bottom;animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0}}
+
+  .hero-role{
+    margin-top:28px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+    color:var(--text-faint);text-transform:uppercase;
+  }
+  h1{
+    font-family:var(--mono);font-weight:800;font-size:clamp(28px,5vw,42px);
+    letter-spacing:0;margin-top:10px;color:var(--text);line-height:1.18;
+  }
+  h1 .amber{color:var(--amber);}
+  .tagline{
+    margin-top:14px;font-size:16px;color:var(--text-dim);max-width:620px;
+  }
+  .hero-links{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:12.5px;font-weight:600;
+    padding:10px 16px;border-radius:var(--radius);
+    border:1px solid var(--border);color:var(--text);
+    display:inline-flex;align-items:center;gap:8px;
+    transition:border-color .15s, transform .15s, background .15s;
+  }
+  .btn:hover{border-color:var(--amber);transform:translateY(-1px);background:var(--surface);}
+  .btn.primary{background:var(--amber);color:#0d0a06;border-color:var(--amber);}
+  .btn.primary:hover{background:#f3b458;}
+
+  section{padding:56px 0;border-top:1px solid var(--border-soft);}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:28px;}
+  .sec-tag{font-family:var(--mono);font-size:12px;color:var(--amber);}
+  .sec-title{font-family:var(--mono);font-weight:700;font-size:20px;color:var(--text);}
+  .sec-sub{font-family:var(--mono);font-size:12px;color:var(--text-faint);margin-left:auto;}
+
+  .proj{
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:var(--surface);
+    margin-bottom:14px;
+    overflow:hidden;
+    transition:border-color .15s;
+  }
+  .proj:hover{border-color:#33404e;}
+  .proj-head{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:16px 18px;border-bottom:1px solid var(--border-soft);
+  }
+  .status{
+    display:flex;align-items:center;gap:6px;
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;
+    padding:3px 8px;border-radius:20px;border:1px solid;
+  }
+  .status.live{color:var(--green);border-color:rgba(79,214,140,.35);background:rgba(79,214,140,.08);}
+  .status.live .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+  .status.built{color:var(--cyan);border-color:rgba(95,184,222,.35);background:rgba(95,184,222,.08);}
+  .status.built .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+  .proj-name{font-family:var(--mono);font-weight:700;font-size:15.5px;color:var(--text);}
+  .proj-hash{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);margin-left:auto;}
+  .proj-body{padding:16px 18px 18px;}
+  .proj-desc{font-size:14.5px;color:var(--text-dim);max-width:660px;}
+  .proj-desc b{color:var(--text);font-weight:600;}
+  .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
+  .tag{
+    font-family:var(--mono);font-size:11px;color:var(--text-dim);
+    border:1px solid var(--border);padding:3px 9px;border-radius:20px;
+  }
+  .proj-foot{display:flex;gap:16px;margin-top:16px;}
+  .proj-foot a{
+    font-family:var(--mono);font-size:12px;color:var(--amber);
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .proj-foot a:hover{text-decoration:underline;}
+  .proj-foot .muted{color:var(--text-faint);}
+
+  .pkg{
+    background:var(--surface);border:1px solid var(--border);border-radius:6px;
+    font-family:var(--mono);font-size:13px;overflow:hidden;
+  }
+  .pkg-top{padding:12px 18px;border-bottom:1px solid var(--border-soft);
+    color:var(--text-faint);font-size:11.5px;background:var(--surface-2);}
+  .pkg-body{padding:18px;}
+  .pkg-group{margin-bottom:16px;}
+  .pkg-group:last-child{margin-bottom:0;}
+  .pkg-group .grp-label{color:var(--text-faint);font-size:11.5px;margin-bottom:8px;}
+  .pkg-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .pkg-item{
+    color:var(--text-dim);font-size:12.5px;
+    border-left:2px solid var(--amber-dim);padding-left:8px;
+  }
+  .pkg-item .k{color:var(--text);}
+  .pkg-item .v{color:var(--text-faint);}
+
+  .contact-term{
+    background:var(--surface);border:1px solid var(--border);border-radius:6px;
+    padding:24px 22px;font-family:var(--mono);font-size:13.5px;
+  }
+  .contact-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;}
+
+  footer{
+    padding:32px 0 48px;text-align:center;
+    font-family:var(--mono);font-size:11.5px;color:var(--text-faint);
+  }
+
+  @media (max-width:720px){
+    nav{align-items:flex-start;flex-direction:column;gap:12px;}
+    .nav-right{width:100%;justify-content:space-between;gap:14px;}
+    .navlinks{gap:16px;}
+  }
+
+  @media (max-width:600px){
+    .wrap{padding:0 18px;}
+    .navlinks{font-size:12px;}
+    .proj-hash{display:none;}
+    .sec-sub{display:none;}
+    .btn{max-width:100%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cursor, .dot, .logo .dot{animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span><span data-i18n="logo">omerAI-mühəndisi</span></div>
+    <div class="nav-right">
+      <div class="navlinks">
+        <a href="#log" data-i18n="nav.projects">layihələr</a>
+        <a href="#stack" data-i18n="nav.stack">stack</a>
+        <a href="#connect" data-i18n="nav.contact">əlaqə</a>
+      </div>
+      <div class="lang-switch" aria-label="Dil seçimi">
+        <button class="lang-btn active" type="button" data-lang="az" aria-pressed="true">AZ</button>
+        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;padding-bottom:0;">
+    <div class="term">
+      <div class="term-bar">
+        <span></span><span></span><span></span>
+        <span class="title" data-i18n="terminal.title">omerAI-mühəndisi: ~</span>
+      </div>
+      <div class="term-body" id="termBody">
+        <div class="line"><span class="prompt" data-i18n="terminal.prompt">omerAI-mühəndisi</span><span class="path">:~$</span> <span class="cmd">whoami</span></div>
+        <div class="out" data-i18n-html="terminal.who">Ömər Babayev — <b>full-stack developer</b> & <span class="amber">AI integrator</span></div>
+        <div class="line"><span class="prompt" data-i18n="terminal.prompt">omerAI-mühəndisi</span><span class="path">:~$</span> <span class="cmd">cat status.txt</span></div>
+        <div class="out" data-i18n-html="terminal.status">IT tələbəsi, Mingəçevir Dövlət Universiteti (2024-2028)<br>Mingəçevir, Azərbaycan · freelance əsaslı işləyir<span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <div class="hero-role">Full-stack Developer / AI Integrator</div>
+    <h1 data-i18n-html="hero.title">Kod yazıram, <span class="amber">deploy edirəm</span>,<br>real problemləri həll edirəm.</h1>
+    <p class="tagline" data-i18n-html="hero.tagline">Next.js, FastAPI və <b style="color:var(--text)">Supabase</b> üzərində qurulan, AI API-lərlə (Claude, Gemini, OpenRouter) gücləndirilmiş məhsullar hazırlayıram — konsepsiyadan production-a qədər.</p>
+
+    <div class="hero-links">
+      <a class="btn primary" href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="cta.github">
+        GitHub → github.com/etikhacker
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/omar-babayev-21888437b" target="_blank" rel="noopener" data-i18n="cta.linkedin">
+        LinkedIn profili
+      </a>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="sec-head">
+      <span class="sec-tag">01</span>
+      <span class="sec-title" data-i18n="projects.title">system.log — layihələr</span>
+      <span class="sec-sub" data-i18n="projects.sub">5 deploy, 2026</span>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="status live"><span class="dot"></span>LIVE</span>
+        <span class="proj-name">E-Cədvəl / QrupTap</span>
+        <span class="proj-hash">#a41f92e</span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc" data-i18n-html="project.schedule">Universitetlər üçün <b>multi-tenant</b> cədvəl planlaşdırma SaaS platforması. Superadmin və universitet admini üçün rol ayrımı, Row Level Security, real vaxtda konflikt aşkarlanması, CSV/PDF ixracı və Resend üzərindən email dəvət sistemi daxildir. Mingəçevir Dövlət Universitetinin Mühəndislik fakültəsi üçün hazırlanmış interaktiv cədvəl generatorundan böyüyüb. ABB Innovation inkubasiya proqramına təqdim olunub.</p>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">TypeScript</span><span class="tag">RLS</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://e-cedvel.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">canlı sayt →</a>
+          <a href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="link.github">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="status live"><span class="dot"></span>LIVE</span>
+        <span class="proj-name">CityAI</span>
+        <span class="proj-hash">#7c02b16</span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc" data-i18n-html="project.cityai">Vətəndaş şikayətləri üçün platforma — <b>Claude Vision API</b> ilə şikayət şəkillərini analiz edir. GPS lokasiya aşkarlanması, admin paneli və vətəndaş üçün izləmə funksiyası daxildir. ASAN AI Hub Challenge 2026 üçün hazırlanıb və ABB Innovation inkubasiya proqramına təqdim olunub.</p>
+        <div class="tags">
+          <span class="tag">Claude Vision API</span><span class="tag">GPS</span><span class="tag">Admin Panel</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://cityai-asan.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">canlı sayt →</a>
+          <a href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="link.github">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="status live"><span class="dot"></span>LIVE</span>
+        <span class="proj-name">EkoAI</span>
+        <span class="proj-hash">#e9d4a03</span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc" data-i18n-html="project.ekoai">Telegram botu ilə inteqrasiya olunmuş <b>AI dəstəkli enerji monitorinqi</b> platforması. Bot Pipedream və OpenRouter üzərindən qurulub; söhbət yaddaşı və inline keyboard funksionallığı var. Frontend-də üzən dəstək düyməsi inteqrasiyası mövcuddur.</p>
+        <div class="tags">
+          <span class="tag">React / Vite</span><span class="tag">FastAPI</span><span class="tag">Gemini API</span><span class="tag">Telegram Bot</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://energy-platform-beta.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">canlı sayt →</a>
+          <a href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="link.github">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="status live"><span class="dot"></span>LIVE</span>
+        <span class="proj-name">Promptr</span>
+        <span class="proj-hash">#2f83c7a</span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc" data-i18n-html="project.promptr">Qısa sorğuları optimallaşdırılmış AI promptlarına çevirən veb tətbiq. OpenRouter-in pulsuz modellərindən istifadə edir və bütün deployment lifecycle Vercel üzərindən idarə olunub.</p>
+        <div class="tags">
+          <span class="tag">OpenRouter</span><span class="tag">Vercel</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="link.github">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-head">
+        <span class="status live"><span class="dot"></span>LIVE</span>
+        <span class="proj-name">RentHome</span>
+        <span class="proj-hash">#5b19f4d</span>
+      </div>
+      <div class="proj-body">
+        <p class="proj-desc" data-i18n-html="project.renthome">Kirayə ev elanları üçün hazırlanmış platforma — son layihələrimdən biri.</p>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span>
+        </div>
+        <div class="proj-foot">
+          <a href="https://rent-home-az.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">canlı sayt →</a>
+          <a href="https://github.com/etikhacker" target="_blank" rel="noopener" data-i18n="link.github">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="sec-head">
+      <span class="sec-tag">02</span>
+      <span class="sec-title" data-i18n="stack.title">package.json — stack</span>
+    </div>
+    <div class="pkg">
+      <div class="pkg-top" data-i18n="stack.caption">// dependencies: işlədiyim əsas alətlər</div>
+      <div class="pkg-body">
+        <div class="pkg-group">
+          <div class="grp-label">"frontend"</div>
+          <div class="pkg-row">
+            <div class="pkg-item"><span class="k">Next.js</span> <span class="v">/ React</span></div>
+            <div class="pkg-item"><span class="k">TypeScript</span></div>
+          </div>
+        </div>
+        <div class="pkg-group">
+          <div class="grp-label">"backend"</div>
+          <div class="pkg-row">
+            <div class="pkg-item"><span class="k">Python</span> <span class="v">/ FastAPI</span></div>
+            <div class="pkg-item"><span class="k">Supabase</span></div>
+          </div>
+        </div>
+        <div class="pkg-group">
+          <div class="grp-label">"ai"</div>
+          <div class="pkg-row">
+            <div class="pkg-item"><span class="k">Claude API</span></div>
+            <div class="pkg-item"><span class="k">Gemini API</span></div>
+            <div class="pkg-item"><span class="k">OpenRouter</span></div>
+          </div>
+        </div>
+        <div class="pkg-group">
+          <div class="grp-label">"infra"</div>
+          <div class="pkg-row">
+            <div class="pkg-item"><span class="k">Vercel</span> <span class="v">deployment</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="connect">
+    <div class="sec-head">
+      <span class="sec-tag">03</span>
+      <span class="sec-title">connect.sh</span>
+    </div>
+    <div class="contact-term">
+      <div class="line"><span class="prompt" data-i18n="terminal.prompt">omerAI-mühəndisi</span><span class="path">:~$</span> <span class="cmd">./connect --open-to=freelance,collab</span></div>
+      <div class="out" data-i18n-html="contact.text">Yeni layihələr və əməkdaşlıq üçün açığam.<br>email: <span class="amber">babayev.omr.23@gmail.com</span><span class="cursor"></span></div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:babayev.omr.23@gmail.com" data-i18n="contact.email">Email göndər</a>
+        <a class="btn" href="https://github.com/etikhacker" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/omar-babayev-21888437b" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer data-i18n="footer">
+  built by Ömər Babayev · Mingəçevir, Azərbaycan · 2026
+</footer>
+
+<script>
+  const translations = {
+    az: {
+      pageTitle: "Ömər Babayev — Full-stack Developer",
+      "logo": "omerAI-mühəndisi",
+      "nav.projects": "layihələr",
+      "nav.stack": "stack",
+      "nav.contact": "əlaqə",
+      "terminal.title": "omerAI-mühəndisi: ~",
+      "terminal.prompt": "omerAI-mühəndisi",
+      "terminal.who": "Ömər Babayev — <b>full-stack developer</b> & <span class=\"amber\">AI integrator</span>",
+      "terminal.status": "IT tələbəsi, Mingəçevir Dövlət Universiteti (2024-2028)<br>Mingəçevir, Azərbaycan · freelance əsaslı işləyir<span class=\"cursor\"></span>",
+      "hero.title": "Kod yazıram, <span class=\"amber\">deploy edirəm</span>,<br>real problemləri həll edirəm.",
+      "hero.tagline": "Next.js, FastAPI və <b style=\"color:var(--text)\">Supabase</b> üzərində qurulan, AI API-lərlə (Claude, Gemini, OpenRouter) gücləndirilmiş məhsullar hazırlayıram — konsepsiyadan production-a qədər.",
+      "cta.github": "GitHub → github.com/etikhacker",
+      "cta.linkedin": "LinkedIn profili",
+      "projects.title": "system.log — layihələr",
+      "projects.sub": "5 deploy, 2026",
+      "project.schedule": "Universitetlər üçün <b>multi-tenant</b> cədvəl planlaşdırma SaaS platforması. Superadmin və universitet admini üçün rol ayrımı, Row Level Security, real vaxtda konflikt aşkarlanması, CSV/PDF ixracı və Resend üzərindən email dəvət sistemi daxildir. Mingəçevir Dövlət Universitetinin Mühəndislik fakültəsi üçün hazırlanmış interaktiv cədvəl generatorundan böyüyüb. ABB Innovation inkubasiya proqramına təqdim olunub.",
+      "project.cityai": "Vətəndaş şikayətləri üçün platforma — <b>Claude Vision API</b> ilə şikayət şəkillərini analiz edir. GPS lokasiya aşkarlanması, admin paneli və vətəndaş üçün izləmə funksiyası daxildir. ASAN AI Hub Challenge 2026 üçün hazırlanıb və ABB Innovation inkubasiya proqramına təqdim olunub.",
+      "project.ekoai": "Telegram botu ilə inteqrasiya olunmuş <b>AI dəstəkli enerji monitorinqi</b> platforması. Bot Pipedream və OpenRouter üzərindən qurulub; söhbət yaddaşı və inline keyboard funksionallığı var. Frontend-də üzən dəstək düyməsi inteqrasiyası mövcuddur.",
+      "project.promptr": "Qısa sorğuları optimallaşdırılmış AI promptlarına çevirən veb tətbiq. OpenRouter-in pulsuz modellərindən istifadə edir və bütün deployment lifecycle Vercel üzərindən idarə olunub.",
+      "project.renthome": "Kirayə ev elanları üçün hazırlanmış platforma — son layihələrimdən biri.",
+      "link.live": "canlı sayt →",
+      "link.github": "GitHub →",
+      "stack.title": "package.json — stack",
+      "stack.caption": "// dependencies: işlədiyim əsas alətlər",
+      "contact.text": "Yeni layihələr və əməkdaşlıq üçün açığam.<br>email: <span class=\"amber\">babayev.omr.23@gmail.com</span><span class=\"cursor\"></span>",
+      "contact.email": "Email göndər",
+      "footer": "built by Ömər Babayev · Mingəçevir, Azərbaycan · 2026"
+    },
+    en: {
+      pageTitle: "Omar Babayev — Full-stack Developer",
+      "logo": "omerAI-engineer",
+      "nav.projects": "projects",
+      "nav.stack": "stack",
+      "nav.contact": "contact",
+      "terminal.title": "omerAI-engineer: ~",
+      "terminal.prompt": "omerAI-engineer",
+      "terminal.who": "Omar Babayev — <b>full-stack developer</b> & <span class=\"amber\">AI integrator</span>",
+      "terminal.status": "IT student, Mingachevir State University (2024-2028)<br>Mingachevir, Azerbaijan · available for freelance work<span class=\"cursor\"></span>",
+      "hero.title": "I build, <span class=\"amber\">deploy</span>,<br>and solve real problems.",
+      "hero.tagline": "I build products with Next.js, FastAPI and <b style=\"color:var(--text)\">Supabase</b>, powered by AI APIs such as Claude, Gemini and OpenRouter — from concept to production.",
+      "cta.github": "GitHub → github.com/etikhacker",
+      "cta.linkedin": "LinkedIn profile",
+      "projects.title": "system.log — projects",
+      "projects.sub": "5 deployments, 2026",
+      "project.schedule": "A <b>multi-tenant</b> timetable planning SaaS platform for universities. It includes separate superadmin and university admin roles, Row Level Security, real-time conflict detection, CSV/PDF export and email invitations through Resend. The project grew out of an interactive timetable generator built for the Engineering Faculty at Mingachevir State University and was submitted to the ABB Innovation incubation program.",
+      "project.cityai": "A citizen complaint platform that analyzes complaint photos with the <b>Claude Vision API</b>. It includes GPS location detection, an admin panel and tracking for citizens. Built for ASAN AI Hub Challenge 2026 and submitted to the ABB Innovation incubation program.",
+      "project.ekoai": "An <b>AI-assisted energy monitoring</b> platform integrated with a Telegram bot. The bot is built on Pipedream and OpenRouter, with chat memory and inline keyboard functionality. The frontend includes a floating support button integration.",
+      "project.promptr": "A web app that turns short requests into optimized AI prompts. It uses free models from OpenRouter, with the full deployment lifecycle managed on Vercel.",
+      "project.renthome": "A platform for rental home listings — one of my latest projects.",
+      "link.live": "live site →",
+      "link.github": "GitHub →",
+      "stack.title": "package.json — stack",
+      "stack.caption": "// dependencies: main tools I work with",
+      "contact.text": "I'm open to new projects and collaborations.<br>email: <span class=\"amber\">babayev.omr.23@gmail.com</span><span class=\"cursor\"></span>",
+      "contact.email": "Send email",
+      "footer": "built by Omar Babayev · Mingachevir, Azerbaijan · 2026"
+    }
+  };
+
+  const htmlNodes = document.querySelectorAll("[data-i18n-html]");
+  const textNodes = document.querySelectorAll("[data-i18n]");
+  const langButtons = document.querySelectorAll(".lang-btn");
+
+  function setLanguage(lang) {
+    const dictionary = translations[lang] || translations.az;
+
+    textNodes.forEach((node) => {
+      const key = node.dataset.i18n;
+      if (dictionary[key]) node.textContent = dictionary[key];
+    });
+
+    htmlNodes.forEach((node) => {
+      const key = node.dataset.i18nHtml;
+      if (dictionary[key]) node.innerHTML = dictionary[key];
+    });
+
+    document.documentElement.lang = lang;
+    document.title = dictionary.pageTitle;
+    localStorage.setItem("portfolio-language", lang);
+
+    langButtons.forEach((button) => {
+      const isActive = button.dataset.lang === lang;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+  }
+
+  langButtons.forEach((button) => {
+    button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  });
+
+  setLanguage(localStorage.getItem("portfolio-language") || "az");
+</script>
+
+</body>
+</html>
