@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem("portfolio-theme");if(!t){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>Ömər Babayev — Full-stack Developer & AI Integrator</title>
 <meta name="description" content="Ömər Babayev — Mingəçevirdə fəaliyyət göstərən full-stack developer və AI integrator. Next.js, FastAPI, Supabase və Claude/Gemini/OpenRouter API-ləri ilə production-ready məhsullar hazırlayır.">
 <meta name="keywords" content="Ömər Babayev, full-stack developer, AI integrator, Next.js developer, Supabase, Azərbaycan proqramçı, Mingəçevir">
@@ -42,9 +43,19 @@
         <li><a href="projects.html" data-i18n="nav.projects">Layihələr</a></li>
         <li><a href="contact.html" data-i18n="nav.contact">Əlaqə</a></li>
       </ul>
-      <div class="lang-switch" data-i18n-aria="lang.aria" aria-label="Dil seçimi">
-        <button class="lang-btn" type="button" data-lang="az" aria-pressed="true">AZ</button>
-        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+      <div class="nav-toggles">
+        <div class="theme-switch" data-i18n-aria="theme.aria" aria-label="Tema seçimi">
+          <button class="theme-btn" type="button" data-theme="dark" aria-pressed="true" data-i18n-aria="theme.dark.aria" aria-label="Qaranlıq tema">
+            <span aria-hidden="true">&#9789;</span>
+          </button>
+          <button class="theme-btn" type="button" data-theme="light" aria-pressed="false" data-i18n-aria="theme.light.aria" aria-label="İşıqlı tema">
+            <span aria-hidden="true">&#9728;</span>
+          </button>
+        </div>
+        <div class="lang-switch" data-i18n-aria="lang.aria" aria-label="Dil seçimi">
+          <button class="lang-btn" type="button" data-lang="az" aria-pressed="true">AZ</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -67,38 +78,40 @@
     </div>
   </section>
 
-  <section aria-labelledby="about-heading">
-    <div class="sec-head">
-      <span class="sec-tag">01</span>
-      <h2 id="about-heading" data-i18n="about.heading">Haqqımda</h2>
-    </div>
-    <p data-i18n="about.body">IT tələbəsiyəm — Mingəçevir Dövlət Universitetində (2024–2028) təhsil alıram — və paralel olaraq freelance əsaslı full-stack developer kimi çalışıram. Mingəçevir, Azərbaycanda yerləşirəm. Universitet və şəhər səviyyəli real problemləri (cədvəl planlaşdırma, vətəndaş şikayətləri, enerji monitorinqi) həll edən AI-gücləndirilmiş platformalar qururam.</p>
-  </section>
+  <div class="about-grid">
+    <section aria-labelledby="about-heading">
+      <div class="sec-head">
+        <span class="sec-tag">01</span>
+        <h2 id="about-heading" data-i18n="about.heading">Haqqımda</h2>
+      </div>
+      <p data-i18n="about.body">IT tələbəsiyəm — Mingəçevir Dövlət Universitetində (2024–2028) təhsil alıram — və paralel olaraq freelance əsaslı full-stack developer kimi çalışıram. Mingəçevir, Azərbaycanda yerləşirəm. Universitet və şəhər səviyyəli real problemləri (cədvəl planlaşdırma, vətəndaş şikayətləri, enerji monitorinqi) həll edən AI-gücləndirilmiş platformalar qururam.</p>
+    </section>
 
-  <section aria-labelledby="stack-heading">
-    <div class="sec-head">
-      <span class="sec-tag">02</span>
-      <h2 id="stack-heading" data-i18n="stack.heading">Texnologiya Stack-i</h2>
-    </div>
-    <dl class="stack-groups">
-      <div class="stack-group">
-        <dt data-i18n="stack.frontend">Frontend</dt>
-        <dd><span>Next.js</span><span>React</span><span>TypeScript</span></dd>
+    <section aria-labelledby="stack-heading">
+      <div class="sec-head">
+        <span class="sec-tag">02</span>
+        <h2 id="stack-heading" data-i18n="stack.heading">Texnologiya Stack-i</h2>
       </div>
-      <div class="stack-group">
-        <dt data-i18n="stack.backend">Backend</dt>
-        <dd><span>Python</span><span>FastAPI</span><span>Supabase</span></dd>
-      </div>
-      <div class="stack-group">
-        <dt data-i18n="stack.ai">AI</dt>
-        <dd><span>Claude API</span><span>Gemini API</span><span>OpenRouter</span></dd>
-      </div>
-      <div class="stack-group">
-        <dt data-i18n="stack.infra">İnfrastruktur</dt>
-        <dd><span>Vercel</span></dd>
-      </div>
-    </dl>
-  </section>
+      <dl class="stack-groups">
+        <div class="stack-group">
+          <dt data-i18n="stack.frontend">Frontend</dt>
+          <dd><span>Next.js</span><span>React</span><span>TypeScript</span></dd>
+        </div>
+        <div class="stack-group">
+          <dt data-i18n="stack.backend">Backend</dt>
+          <dd><span>Python</span><span>FastAPI</span><span>Supabase</span></dd>
+        </div>
+        <div class="stack-group">
+          <dt data-i18n="stack.ai">AI</dt>
+          <dd><span>Claude API</span><span>Gemini API</span><span>OpenRouter</span></dd>
+        </div>
+        <div class="stack-group">
+          <dt data-i18n="stack.infra">İnfrastruktur</dt>
+          <dd><span>Vercel</span></dd>
+        </div>
+      </dl>
+    </section>
+  </div>
 
   <section aria-labelledby="projects-preview-heading">
     <div class="sec-head">

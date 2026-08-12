@@ -20,6 +20,9 @@ const translations = {
     "nav.contact": "Əlaqə",
     "nav.aria": "Əsas naviqasiya",
     "lang.aria": "Dil seçimi",
+    "theme.aria": "Tema seçimi",
+    "theme.dark.aria": "Qaranlıq tema",
+    "theme.light.aria": "İşıqlı tema",
     "footer.html": "Hazırladı: <a href=\"https://github.com/etikhacker\" target=\"_blank\" rel=\"noopener noreferrer\">Ömər Babayev</a> · Mingəçevir, Azərbaycan · 2026",
 
     "hero.role": "Full-stack Developer / AI Integrator",
@@ -104,6 +107,9 @@ const translations = {
     "nav.contact": "Contact",
     "nav.aria": "Main navigation",
     "lang.aria": "Language selection",
+    "theme.aria": "Theme selection",
+    "theme.dark.aria": "Dark theme",
+    "theme.light.aria": "Light theme",
     "footer.html": "Built by <a href=\"https://github.com/etikhacker\" target=\"_blank\" rel=\"noopener noreferrer\">Omar Babayev</a> · Mingachevir, Azerbaijan · 2026",
 
     "hero.role": "Full-stack Developer / AI Integrator",
@@ -228,6 +234,32 @@ const translations = {
   });
 
   setLanguage(currentLang);
+
+  /* ---------------------------------------------------------
+     Light/dark theme toggle — persisted, falls back to the
+     visitor's OS-level preference on first visit.
+     --------------------------------------------------------- */
+  const themeButtons = document.querySelectorAll(".theme-btn");
+  const storedTheme = localStorage.getItem("portfolio-theme");
+  const prefersLight =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  let currentTheme = storedTheme || (prefersLight ? "light" : "dark");
+
+  function setTheme(theme) {
+    if (theme !== "light" && theme !== "dark") theme = "dark";
+    currentTheme = theme;
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("portfolio-theme", theme);
+    themeButtons.forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.dataset.theme === theme));
+    });
+  }
+
+  themeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => setTheme(btn.dataset.theme));
+  });
+
+  setTheme(currentTheme);
 
   /* ---------------------------------------------------------
      Contact form: validation + mailto submission (contact.html)

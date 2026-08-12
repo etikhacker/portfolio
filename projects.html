@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem("portfolio-theme");if(!t){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <title>Layihələr — Ömər Babayev</title>
 <meta name="description" content="Ömər Babayevin layihələri: E-Cədvəl/QrupTap, CityAI, EkoAI, Promptr və RentHome — Next.js, Supabase və AI API-ləri ilə qurulmuş production platformalar.">
 <meta name="keywords" content="Ömər Babayev layihələr, E-Cədvəl, QrupTap, CityAI, EkoAI, Promptr, RentHome">
@@ -42,9 +43,19 @@
         <li><a href="projects.html" aria-current="page" data-i18n="nav.projects">Layihələr</a></li>
         <li><a href="contact.html" data-i18n="nav.contact">Əlaqə</a></li>
       </ul>
-      <div class="lang-switch" data-i18n-aria="lang.aria" aria-label="Dil seçimi">
-        <button class="lang-btn" type="button" data-lang="az" aria-pressed="true">AZ</button>
-        <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+      <div class="nav-toggles">
+        <div class="theme-switch" data-i18n-aria="theme.aria" aria-label="Tema seçimi">
+          <button class="theme-btn" type="button" data-theme="dark" aria-pressed="true" data-i18n-aria="theme.dark.aria" aria-label="Qaranlıq tema">
+            <span aria-hidden="true">&#9789;</span>
+          </button>
+          <button class="theme-btn" type="button" data-theme="light" aria-pressed="false" data-i18n-aria="theme.light.aria" aria-label="İşıqlı tema">
+            <span aria-hidden="true">&#9728;</span>
+          </button>
+        </div>
+        <div class="lang-switch" data-i18n-aria="lang.aria" aria-label="Dil seçimi">
+          <button class="lang-btn" type="button" data-lang="az" aria-pressed="true">AZ</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -61,6 +72,7 @@
   <section aria-labelledby="projects-list-heading">
     <h2 id="projects-list-heading" class="visually-hidden" data-i18n="projects.list.label">Layihələrin siyahısı</h2>
 
+    <div class="proj-grid">
     <article class="proj" aria-labelledby="proj-schedule-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
@@ -144,6 +156,7 @@
         </div>
       </div>
     </article>
+    </div>
 
   </section>
 
