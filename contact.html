@@ -8,12 +8,12 @@
 <meta name="description" content="Ömər Babayevlə əlaqə saxlayın — freelance layihələr, əməkdaşlıq və yeni fürsətlər üçün email və ya əlaqə formu ilə yazın.">
 <meta name="keywords" content="Ömər Babayev əlaqə, freelance developer əlaqə, Mingəçevir developer">
 <meta name="author" content="Ömər Babayev">
-<link rel="canonical" href="https://portfolio-omar-babayev.vercel.app/contact.html">
+<link rel="canonical" href="https://portfolio-omar-babayev.vercel.app/contact">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Əlaqə — Ömər Babayev">
 <meta property="og:description" content="Freelance layihələr və əməkdaşlıq üçün Ömər Babayevlə əlaqə saxlayın.">
-<meta property="og:url" content="https://portfolio-omar-babayev.vercel.app/contact.html">
+<meta property="og:url" content="https://portfolio-omar-babayev.vercel.app/contact">
 <meta property="og:locale" content="az_AZ">
 
 <meta name="twitter:card" content="summary">
@@ -39,9 +39,9 @@
     </div>
     <div class="nav-right">
       <ul class="navlinks">
-        <li><a href="index.html" data-i18n="nav.home">Ana səhifə</a></li>
-        <li><a href="projects.html" data-i18n="nav.projects">Layihələr</a></li>
-        <li><a href="contact.html" aria-current="page" data-i18n="nav.contact">Əlaqə</a></li>
+        <li><a href="/" data-i18n="nav.home">Ana səhifə</a></li>
+        <li><a href="/projects" data-i18n="nav.projects">Layihələr</a></li>
+        <li><a href="/contact" aria-current="page" data-i18n="nav.contact">Əlaqə</a></li>
       </ul>
       <div class="nav-toggles">
         <div class="theme-switch" data-i18n-aria="theme.aria" aria-label="Tema seçimi">
@@ -75,6 +75,11 @@
     </p>
 
     <form id="contact-form" novalidate aria-describedby="form-status">
+      <!-- Web3Forms: replace with your own key from https://web3forms.com (free, no account needed) -->
+      <input type="hidden" name="access_key" id="access-key" value="f8ff85a0-8aec-4e98-8990-b1ca79da4ff6">
+      <input type="hidden" name="from_name" value="Portfolio Contact Form">
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
       <fieldset>
         <legend data-i18n="contact.legend">Mesaj formu</legend>
 

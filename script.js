@@ -1,7 +1,9 @@
 /* ============================================================
    Ömər Babayev — Portfolio
    Shared script: AZ/EN language switching + accessible
-   contact-form validation (mailto fallback, no backend).
+   contact-form validation, submitted via Web3Forms (no backend
+   of your own needed — see the access_key setup note in
+   contact.html).
    Loaded on every page; each block only acts on elements
    that exist on the current page.
    ============================================================ */
@@ -89,9 +91,9 @@ const translations = {
     "validation.email": "Zəhmət olmasa düzgün email ünvanı daxil edin.",
     "validation.message": "Zəhmət olmasa mesajınızı yazın.",
     "status.error": "Formda xətalar var — zəhmət olmasa işarələnmiş sahələri düzəldin.",
-    "status.success": "Email tətbiqiniz açılır — mesajınızı orada göndərə bilərsiniz.",
-    "mailto.subjectDefault": "Portfoliodan mesaj",
-    "mailto.bodyLabel": "Ad"
+    "status.success": "Mesajınız göndərildi — tezliklə cavab verəcəyəm.",
+    "status.sending": "Göndərilir…",
+    "status.network-error": "Mesaj göndərilmədi — internet bağlantınızı yoxlayıb yenidən cəhd edin."
   },
 
   en: {
@@ -176,9 +178,9 @@ const translations = {
     "validation.email": "Please enter a valid email address.",
     "validation.message": "Please write your message.",
     "status.error": "There are errors in the form — please fix the highlighted fields.",
-    "status.success": "Your email app is opening — you can send the message from there.",
-    "mailto.subjectDefault": "Message from portfolio",
-    "mailto.bodyLabel": "Name"
+    "status.success": "Your message has been sent — I'll get back to you soon.",
+    "status.sending": "Sending…",
+    "status.network-error": "Couldn't send your message — check your connection and try again."
   }
 };
 
@@ -315,6 +317,17 @@ const translations = {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
+      // Honeypot: real visitors never fill this hidden field.
+      // Bots that auto-fill every input will — pretend success, send nothing.
+      const botcheck = form.querySelector('[name="botcheck"]');
+      if (botcheck && botcheck.checked) {
+        status.textContent = dict()["status.success"];
+        status.classList.remove("is-error");
+        status.dataset.state = "success";
+        form.reset();
+        return;
+      }
+
       let firstInvalid = null;
       let allValid = true;
 
@@ -333,24 +346,56 @@ const translations = {
         return;
       }
 
+      const accessKey = document.getElementById("access-key").value;
+      if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
+        status.textContent = "Setup incomplete: paste your Web3Forms access key into contact.html.";
+        status.classList.add("is-error");
+        status.dataset.state = "error";
+        return;
+      }
+
       status.classList.remove("is-error");
+      status.textContent = dict()["status.sending"];
+      status.dataset.state = "sending";
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject =
-        document.getElementById("subject").value.trim() || dict()["mailto.subjectDefault"];
-      const message = document.getElementById("message").value.trim();
-      const bodyLabel = dict()["mailto.bodyLabel"];
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
 
-      const mailBody = `${bodyLabel}: ${name}\nEmail: ${email}\n\n${message}`;
-      const mailtoUrl =
-        "mailto:babayev.omr.23@gmail.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(mailBody);
+      const payload = {
+        access_key: accessKey,
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        subject:
+          document.getElementById("subject").value.trim() ||
+          "Portfolio contact form",
+        message: document.getElementById("message").value.trim(),
+      };
 
-      window.location.href = mailtoUrl;
-      status.textContent = dict()["status.success"];
-      status.dataset.state = "success";
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            status.textContent = dict()["status.success"];
+            status.dataset.state = "success";
+            form.reset();
+          } else {
+            status.textContent = dict()["status.network-error"];
+            status.classList.add("is-error");
+            status.dataset.state = "network-error";
+          }
+        })
+        .catch(() => {
+          status.textContent = dict()["status.network-error"];
+          status.classList.add("is-error");
+          status.dataset.state = "network-error";
+        })
+        .finally(() => {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
 
     fieldDefs.forEach((field) => {

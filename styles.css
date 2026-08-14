@@ -85,6 +85,17 @@ ul,ol{list-style:none;}
   border:0;
 }
 
+/* ---- Honeypot field: hidden from EVERYONE (sighted + AT), unlike
+   .visually-hidden which stays in the accessible tree on purpose ---- */
+.hp-field{
+  position:absolute !important;
+  left:-9999px !important;
+  top:-9999px !important;
+  width:0 !important;height:0 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
 /* ---- Visible focus indicator everywhere (WCAG 2.4.7) ---- */
 a:focus-visible,
 button:focus-visible,
