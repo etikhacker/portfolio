@@ -25,16 +25,16 @@ const translations = {
     "theme.light.aria": "İşıqlı tema",
     "footer.html": "Hazırladı: <a href=\"https://github.com/etikhacker\" target=\"_blank\" rel=\"noopener noreferrer\">Ömər Babayev</a> · Mingəçevir, Azərbaycan · 2026",
 
-    "hero.role": "Full-stack Developer / AI Integrator",
-    "hero.title.html": "Kod yazıram, <span class=\"amber\">deploy edirəm</span>, real problemləri həll edirəm.",
-    "hero.tagline.html": "Next.js, FastAPI və <strong>Supabase</strong> üzərində qurulan, AI API-lərlə (Claude, Gemini, OpenRouter) gücləndirilmiş məhsullar hazırlayıram — konsepsiyadan production-a qədər.",
+    "hero.role": "Vibe Coder / AI-Assisted Full-stack Developer",
+    "hero.title.html": "AI ilə <span class=\"amber\">vibe coding</span> edirəm, sürətlə deploy edirəm.",
+    "hero.tagline.html": "Fikri prompt-a, prompt-u işlək məhsula çevirirəm. Next.js, FastAPI və <strong>Supabase</strong> üzərində, Claude/Gemini/OpenRouter kimi AI alətlərini iş axınımın mərkəzinə qoyaraq — ideyadan production-a qədər sürətli, təkrarlanan dövrələrlə inkişaf edirəm.",
     "cta.github.aria": "Ömərin GitHub profilinə keç (yeni pəncərədə açılır)",
     "cta.github": "GitHub → github.com/etikhacker",
     "cta.linkedin.aria": "Ömərin LinkedIn profilinə keç (yeni pəncərədə açılır)",
     "cta.linkedin": "LinkedIn profili",
 
     "about.heading": "Haqqımda",
-    "about.body": "IT tələbəsiyəm — Mingəçevir Dövlət Universitetində (2024–2028) təhsil alıram — və paralel olaraq freelance əsaslı full-stack developer kimi çalışıram. Mingəçevir, Azərbaycanda yerləşirəm. Universitet və şəhər səviyyəli real problemləri (cədvəl planlaşdırma, vətəndaş şikayətləri, enerji monitorinqi) həll edən AI-gücləndirilmiş platformalar qururam.",
+    "about.body": "IT tələbəsiyəm — Mingəçevir Dövlət Universitetində (2024–2028) təhsil alıram — və paralel olaraq freelance əsaslı vibe coder kimi çalışıram. Mingəçevir, Azərbaycanda yerləşirəm. AI alətlərini (Claude, Cursor və oxşarları) iş prosesimin əsasına qoyaraq, sürətli prompt-əsaslı iterasiyalarla universitet və şəhər səviyyəli real problemləri (cədvəl planlaşdırma, vətəndaş şikayətləri, enerji monitorinqi) həll edən platformalar qururam.",
 
     "stack.heading": "Texnologiya Stack-i",
     "stack.frontend": "Frontend",
@@ -112,16 +112,16 @@ const translations = {
     "theme.light.aria": "Light theme",
     "footer.html": "Built by <a href=\"https://github.com/etikhacker\" target=\"_blank\" rel=\"noopener noreferrer\">Omar Babayev</a> · Mingachevir, Azerbaijan · 2026",
 
-    "hero.role": "Full-stack Developer / AI Integrator",
-    "hero.title.html": "I build, <span class=\"amber\">deploy</span>, and solve real problems.",
-    "hero.tagline.html": "I build products with Next.js, FastAPI and <strong>Supabase</strong>, powered by AI APIs such as Claude, Gemini and OpenRouter — from concept to production.",
+    "hero.role": "Vibe Coder / AI-Assisted Full-stack Developer",
+    "hero.title.html": "I <span class=\"amber\">vibe code</span> with AI and ship fast.",
+    "hero.tagline.html": "I turn ideas into prompts, and prompts into working products. Built on Next.js, FastAPI and <strong>Supabase</strong>, with AI tools like Claude, Gemini and OpenRouter at the center of my workflow — fast, iterative cycles from concept to production.",
     "cta.github.aria": "Go to Omar's GitHub profile (opens in a new window)",
     "cta.github": "GitHub → github.com/etikhacker",
     "cta.linkedin.aria": "Go to Omar's LinkedIn profile (opens in a new window)",
     "cta.linkedin": "LinkedIn profile",
 
     "about.heading": "About",
-    "about.body": "I'm an IT student at Mingachevir State University (2024–2028), and I work in parallel as a freelance full-stack developer based in Mingachevir, Azerbaijan. I build AI-powered platforms that solve real university- and city-level problems — timetable planning, citizen complaints, energy monitoring.",
+    "about.body": "I'm an IT student at Mingachevir State University (2024–2028), and I work in parallel as a freelance vibe coder based in Mingachevir, Azerbaijan. I put AI tools (Claude, Cursor, and similar) at the center of my workflow, building real university- and city-level solutions — timetable planning, citizen complaints, energy monitoring — through fast, prompt-driven iteration.",
 
     "stack.heading": "Tech Stack",
     "stack.frontend": "Frontend",
