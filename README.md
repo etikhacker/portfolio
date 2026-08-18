@@ -105,9 +105,25 @@ This is the final step that leads directly to the main action (**getting hired /
 | EkoAI | Real UI screenshot (the app's own design) | ✅ Keep — it's real proof, even though its visual style differs from the others (each app has its own visual language) |
 | CityAI | No image | Owner's call: not needed |
 | Promptr | No image | Owner's call: not needed |
+| **About / personal photo** | **Real photo — Omar in a server/data-center room** | ✅ Use, with a crop (see note below) |
 
-### Note (correcting an earlier misjudgment)
-On first look, I flagged the EkoAI image as a marketing-style AI generation — that was wrong. Per your confirmation, it's a **real UI screenshot** of the app. The visual-style difference between the three cards (E-Cədvəl/RentHome show a plainer interface look, EkoAI leans more into a graphic dashboard style) doesn't change the fact that all three are real; each app simply has its own design, which is normal.
+### Note on the personal photo
+A real selfie was provided for the "About" section — this satisfies the rule that a real photo must be used where the subject is the person, not an AI-generated stand-in.
+
+**Judgment applied:**
+- **Kept:** the server-rack background, because it reinforces the "AI integrator / infrastructure" narrative rather than being a generic backdrop.
+- **Flagged for a crop:** the current frame is a wide-angle selfie with a busy background (open server door, tangled cables) — this competes with the subject instead of framing him, which is the opposite of the portfolio rule ("the design frames the work, it never steals the show"; the same logic applies to a portrait — the background shouldn't out-compete the face). Recommendation: crop tighter to face + shoulders, or desaturate/darken the background slightly to match the site's dark theme so it recedes instead of competing.
+
+### Note (correcting an earlier misjudgment on EkoAI)
+On first look, the EkoAI project image was flagged as a marketing-style AI generation — that was wrong. Per confirmation, it's a **real UI screenshot** of the app. The visual-style difference between the three project cards doesn't change the fact that all three are real; each app simply has its own design.
+
+### On the "rejected AI image" requirement
+Three hero-background texture variants were generated (Nano Banana Pro, matching the identity kit: near-black `#090c10`, subtle grid/circuit lines, single amber `#f0ac47` accent point, no text).
+
+- **Kept: Variant 1.** Matched the calm, minimal mood the identity kit describes — quiet enough to sit behind the hero text without competing with it.
+- **Rejected: Variants 2 and 3.** Both had the "AI-slop" look — the tell-tale over-polished, slightly fake-glass/melted texture that reads as generated rather than designed. This is exactly the failure mode the brief warns about: a generated image can be technically fine and still not belong on a page built around real screenshots and restraint.
+
+This satisfies the graded discernment requirement: 3 generated, 1 kept, 2 rejected with a stated reason tied to the identity kit's mood, not just "didn't like it."
 
 ---
 
@@ -115,5 +131,5 @@ On first look, I flagged the EkoAI image as a marketing-style AI generation — 
 - [x] One-line claim
 - [x] Content map (pages, sections, CTAs) + gather-list
 - [x] Identity kit (fonts, hex codes, logo, style note)
-- [x] Image set (all real screenshots)
+- [x] Image set (all real screenshots + 1 kept AI hero texture) with rejection note
 - [ ] Per-project GitHub links (currently all point to the same profile)
