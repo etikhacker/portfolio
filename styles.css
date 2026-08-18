@@ -251,17 +251,6 @@ p{color:var(--text-dim);max-width:640px;}
   .about-grid section{border-top:none;padding-top:56px;}
 }
 
-.about-photo{
-  display:block;
-  width:120px;
-  height:136px;
-  object-fit:cover;
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  margin-bottom:20px;
-  filter:grayscale(0.15) contrast(1.03);
-}
-
 /* ---- Definition-list style stack section ----
    Grid: 1 column on mobile, 2 on tablet, 4 on wide desktop —
    a genuine multi-column/multi-row (2D) layout. ---- */
