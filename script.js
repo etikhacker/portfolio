@@ -71,7 +71,7 @@ const translations = {
     "project.live": "canlı",
 
     "projects.heading": "Layihələr",
-    "projects.tagline": "Beş production platforma — universitetlərdən vətəndaş xidmətlərinə qədər, AI API-ləri ilə gücləndirilmiş.",
+    "projects.tagline": "Doqquz production layihə — universitetlərdən səsli agentlərə qədər, AI API-ləri ilə gücləndirilmiş.",
     "projects.list.label": "Layihələrin siyahısı",
 
     "proj.schedule.desc.html": "Universitetlər üçün <strong>multi-tenant</strong> cədvəl planlaşdırma SaaS platforması. Superadmin və universitet admini üçün rol ayrımı, Row Level Security, real vaxtda konflikt aşkarlanması, CSV/PDF ixracı və Resend üzərindən email dəvət sistemi daxildir. Mingəçevir Dövlət Universitetinin Mühəndislik fakültəsi üçün hazırlanmış interaktiv cədvəl generatorundan böyüyüb. ABB Innovation inkubasiya proqramına təqdim olunub.",
@@ -79,12 +79,20 @@ const translations = {
     "proj.ekoai.desc.html": "Telegram botu ilə inteqrasiya olunmuş <strong>AI dəstəkli enerji monitorinqi</strong> platforması. Bot Pipedream və OpenRouter üzərindən qurulub; söhbət yaddaşı və inline keyboard funksionallığı var. Frontend-də üzən dəstək düyməsi inteqrasiyası mövcuddur.",
     "proj.promptr.desc.html": "Qısa sorğuları optimallaşdırılmış AI promptlarına çevirən veb tətbiq. OpenRouter-in pulsuz modellərindən istifadə edir və bütün deployment lifecycle Vercel üzərindən idarə olunub.",
     "proj.renthome.desc.html": "Kirayə ev elanları üçün hazırlanmış platforma — son layihələrimdən biri.",
+    "proj.techses.desc.html": "Səs ilə işləyən IT dəstək konsolu — <strong>AssemblyAI Voice Agent</strong> Hackathon submission. Mikrofonla real vaxt səs söhbəti, canlı transkript, söylənilən troubleshooting və eskalasiya üçün strukturlaşdırılmış ticket yaradılması. API açarı Vercel serverless funksiyasında qalır, brauzerə yalnız qısamüddətli token ötürülür.",
+    "proj.unpack.desc.html": "Gemini API ilə işləyən <strong>konsept izahedicisi</strong> — tələbələr üçün seçilmiş çətinlik səviyyəsində (başlanğıc/orta/qabaqcıl) izahlar. UI və prompt səviyyəsində tam AZ/EN dəstəyi, hədəf auditoriyası üçün tənzimlənən kontekst. ShadowFox AI Engineer Internship Beginner track üçün hazırlanıb.",
+    "proj.atlas.desc.html": "PySide6 ilə qurulmuş <strong>Windows masaüstü AI köməkçi</strong> əsası. OpenAI, Gemini və Anthropic üçün provayder adapterləri, asinxron söhbət, push-to-talk və TTS daxildir. API açarları `keyring` vasitəsilə Windows Credential Manager-də təhlükəsiz saxlanılır, fayla və ya loga yazılmır.",
+    "proj.weather.desc.html": "Open-Meteo API üzərindən React 19 + TypeScript ilə qurulmuş <strong>hava dashboard</strong>. Şəhər axtarışı və ya browser geolokasiyası ilə cari hava şəraiti, 6 saatlıq proqnoz və tam AZ/EN dəstəyi. Gizli API açarı tələb etmir — server yoxdur, brauzerdən birbaşa sorğu.",
 
     "proj.tags.aria.schedule": "E-Cədvəl layihəsində istifadə olunan texnologiyalar",
     "proj.tags.aria.cityai": "CityAI layihəsində istifadə olunan texnologiyalar",
     "proj.tags.aria.ekoai": "EkoAI layihəsində istifadə olunan texnologiyalar",
     "proj.tags.aria.promptr": "Promptr layihəsində istifadə olunan texnologiyalar",
     "proj.tags.aria.renthome": "RentHome layihəsində istifadə olunan texnologiyalar",
+    "proj.tags.aria.techses": "TechSəs layihəsində istifadə olunan texnologiyalar",
+    "proj.tags.aria.unpack": "Unpack layihəsində istifadə olunan texnologiyalar",
+    "proj.tags.aria.atlas": "ATLAS layihəsində istifadə olunan texnologiyalar",
+    "proj.tags.aria.weather": "Weather Dashboard layihəsində istifadə olunan texnologiyalar",
 
     "link.live": "canlı sayt →",
     "link.github": "GitHub →",
@@ -97,6 +105,11 @@ const translations = {
     "link.github.aria.promptr": "Promptr layihəsinin GitHub profilinə keç (yeni pəncərədə açılır)",
     "link.live.aria.renthome": "RentHome layihəsinin canlı saytına keç (yeni pəncərədə açılır)",
     "link.github.aria.renthome": "RentHome layihəsinin GitHub profilinə keç (yeni pəncərədə açılır)",
+    "link.live.aria.techses": "TechSəs layihəsinin canlı saytına keç (yeni pəncərədə açılır)",
+    "link.github.aria.techses": "TechSəs layihəsinin GitHub reposuna keç (yeni pəncərədə açılır)",
+    "link.github.aria.unpack": "Unpack layihəsinin GitHub reposuna keç (yeni pəncərədə açılır)",
+    "link.github.aria.atlas": "ATLAS layihəsinin GitHub reposuna keç (yeni pəncərədə açılır)",
+    "link.github.aria.weather": "Weather Dashboard layihəsinin GitHub reposuna keç (yeni pəncərədə açılır)",
 
     "contact.banner.title": "İdeyanız var? Gəlin birlikdə quraq.",
     "contact.banner.body": "Yeni layihələr, freelance iş və texniki əməkdaşlıq üçün açığam.",
@@ -183,7 +196,7 @@ const translations = {
     "project.live": "live",
 
     "projects.heading": "Projects",
-    "projects.tagline": "Five production platforms — from universities to citizen services, powered by AI APIs.",
+    "projects.tagline": "Nine production projects — from universities to voice agents, powered by AI APIs.",
     "projects.list.label": "List of projects",
 
     "proj.schedule.desc.html": "A <strong>multi-tenant</strong> timetable planning SaaS platform for universities. It includes separate superadmin and university admin roles, Row Level Security, real-time conflict detection, CSV/PDF export and email invitations through Resend. The project grew out of an interactive timetable generator built for the Engineering Faculty at Mingachevir State University and was submitted to the ABB Innovation incubation program.",
@@ -191,12 +204,20 @@ const translations = {
     "proj.ekoai.desc.html": "An <strong>AI-assisted energy monitoring</strong> platform integrated with a Telegram bot. The bot is built on Pipedream and OpenRouter, with chat memory and inline keyboard functionality. The frontend includes a floating support button integration.",
     "proj.promptr.desc.html": "A web app that turns short requests into optimized AI prompts. It uses free models from OpenRouter, with the full deployment lifecycle managed on Vercel.",
     "proj.renthome.desc.html": "A platform for rental home listings — one of my latest projects.",
+    "proj.techses.desc.html": "A voice-first IT support console — a <strong>AssemblyAI Voice Agent</strong> Hackathon submission. Real-time microphone conversations, live transcripts, spoken troubleshooting, and structured ticket summaries for escalation. The permanent API key stays on a Vercel serverless function; only short-lived tokens reach the browser.",
+    "proj.unpack.desc.html": "A Gemini-powered <strong>concept explainer</strong> built for students. Explains any topic at a chosen depth (beginner/intermediate/advanced) with full AZ/EN support in both the UI and prompts, plus optional student context. Built for the Beginner track of the ShadowFox AI Engineer Internship.",
+    "proj.atlas.desc.html": "A <strong>Windows desktop AI assistant</strong> foundation built with PySide6. Includes provider adapters for OpenAI, Gemini and Anthropic, async chat, push-to-talk and TTS. Credentials are stored securely through the Windows Credential Manager via `keyring` — never written to files or logs.",
+    "proj.weather.desc.html": "A <strong>weather dashboard</strong> built with React 19 and TypeScript on top of the Open-Meteo API. City search or browser geolocation for current conditions, a six-hour outlook, and full AZ/EN support. No secret API key needed — no server, direct browser-side requests.",
 
     "proj.tags.aria.schedule": "Technologies used in the E-Cədvəl project",
     "proj.tags.aria.cityai": "Technologies used in the CityAI project",
     "proj.tags.aria.ekoai": "Technologies used in the EkoAI project",
     "proj.tags.aria.promptr": "Technologies used in the Promptr project",
     "proj.tags.aria.renthome": "Technologies used in the RentHome project",
+    "proj.tags.aria.techses": "Technologies used in the TechSəs project",
+    "proj.tags.aria.unpack": "Technologies used in the Unpack project",
+    "proj.tags.aria.atlas": "Technologies used in the ATLAS project",
+    "proj.tags.aria.weather": "Technologies used in the Weather Dashboard project",
 
     "link.live": "live site →",
     "link.github": "GitHub →",
@@ -209,6 +230,11 @@ const translations = {
     "link.github.aria.promptr": "Go to the Promptr GitHub profile (opens in a new window)",
     "link.live.aria.renthome": "Go to the RentHome live site (opens in a new window)",
     "link.github.aria.renthome": "Go to the RentHome GitHub profile (opens in a new window)",
+    "link.live.aria.techses": "Go to the TechSəs live site (opens in a new window)",
+    "link.github.aria.techses": "Go to the TechSəs GitHub repository (opens in a new window)",
+    "link.github.aria.unpack": "Go to the Unpack GitHub repository (opens in a new window)",
+    "link.github.aria.atlas": "Go to the ATLAS GitHub repository (opens in a new window)",
+    "link.github.aria.weather": "Go to the Weather Dashboard GitHub repository (opens in a new window)",
 
     "contact.banner.title": "Have an idea? Let's build it together.",
     "contact.banner.body": "I'm open to new projects, freelance work and technical collaboration.",
