@@ -35,6 +35,8 @@ const translations = {
     "footer.links.github": "GitHub profili",
     "footer.social.github.aria": "GitHub profilinə keç (yeni pəncərədə açılır)",
     "footer.social.linkedin.aria": "LinkedIn profilinə keç (yeni pəncərədə açılır)",
+    "footer.social.x.aria": "X (Twitter) profilinə keç (yeni pəncərədə açılır)",
+    "footer.social.instagram.aria": "Instagram profilinə keç (yeni pəncərədə açılır)",
     "footer.social.email.aria": "Email yazmaq üçün poçt müştərisini aç",
     "footer.copyright": "© 2026 Ömər Babayev · Mingəçevir, Azərbaycan. Bütün hüquqlar qorunur.",
 
@@ -171,6 +173,8 @@ const translations = {
     "footer.links.github": "GitHub profile",
     "footer.social.github.aria": "Go to the GitHub profile (opens in a new window)",
     "footer.social.linkedin.aria": "Go to the LinkedIn profile (opens in a new window)",
+    "footer.social.x.aria": "Go to the X (Twitter) profile (opens in a new window)",
+    "footer.social.instagram.aria": "Go to the Instagram profile (opens in a new window)",
     "footer.social.email.aria": "Open the email client to write a message",
     "footer.copyright": "© 2026 Omar Babayev · Mingachevir, Azerbaijan. All rights reserved.",
 
