@@ -366,11 +366,12 @@ const translations = {
   setTheme(currentTheme);
 
   /* ---------------------------------------------------------
-     Contact form: validation + mailto submission (contact.html)
+     Contact form: validation + Web3Forms submission (contact.html)
      --------------------------------------------------------- */
   const form = document.getElementById("contact-form");
   if (form) {
     const status = document.getElementById("form-status");
+    let isSubmitting = false;
     const fieldDefs = [
       { id: "name", errorId: "name-error", key: "validation.name" },
       {
@@ -419,6 +420,9 @@ const translations = {
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
+      // A disabled button does not stop programmatic or Enter-key submits.
+      if (isSubmitting) return;
+
       // Honeypot: real visitors never fill this hidden field.
       // Bots that auto-fill every input will — pretend success, send nothing.
       const botcheck = form.querySelector('[name="botcheck"]');
@@ -459,6 +463,7 @@ const translations = {
       status.classList.remove("is-error");
       status.textContent = dict()["status.sending"];
       status.dataset.state = "sending";
+      isSubmitting = true;
 
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
@@ -496,6 +501,7 @@ const translations = {
           status.dataset.state = "network-error";
         })
         .finally(() => {
+          isSubmitting = false;
           if (submitBtn) submitBtn.disabled = false;
         });
     });
