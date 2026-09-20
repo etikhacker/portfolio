@@ -15,10 +15,13 @@
 <meta property="og:description" content="Freelance layihələr və əməkdaşlıq üçün Ömər Babayevlə əlaqə saxlayın.">
 <meta property="og:url" content="https://portfolio-omar-babayev.vercel.app/contact">
 <meta property="og:locale" content="az_AZ">
+<meta property="og:image" content="https://portfolio-omar-babayev.vercel.app/assets/omar-babayev-portfolio-logo.png">
+<meta property="og:image:alt" content="Ömər Babayev ilə əlaqə">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Əlaqə — Ömər Babayev">
 <meta name="twitter:description" content="Freelance layihələr və əməkdaşlıq üçün Ömər Babayevlə əlaqə saxlayın.">
+<meta name="twitter:image" content="https://portfolio-omar-babayev.vercel.app/assets/omar-babayev-portfolio-logo.png">
   <link rel="icon" type="image/png" sizes="any" href="assets/omar-babayev-portfolio-logo.png?v=2">
   <link rel="apple-touch-icon" href="assets/omar-babayev-portfolio-logo.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,6 +88,7 @@
             required
             aria-required="true"
             aria-describedby="name-error"
+            maxlength="120"
             autocomplete="name">
           <span id="name-error" class="error-message" role="alert"></span>
         </div>
@@ -98,6 +102,7 @@
             required
             aria-required="true"
             aria-describedby="email-error"
+            maxlength="254"
             autocomplete="email">
           <span id="email-error" class="error-message" role="alert"></span>
         </div>
@@ -109,6 +114,7 @@
             id="subject"
             name="subject"
             aria-describedby="subject-hint"
+            maxlength="160"
             autocomplete="off">
           <span id="subject-hint" class="hint" data-i18n="contact.subject.hint">Məcburi deyil</span>
         </div>
@@ -121,7 +127,8 @@
             rows="6"
             required
             aria-required="true"
-            aria-describedby="message-error"></textarea>
+            aria-describedby="message-error"
+            maxlength="3000"></textarea>
           <span id="message-error" class="error-message" role="alert"></span>
         </div>
       </fieldset>
@@ -188,10 +195,16 @@
 
     <div class="footer-bottom">
       <p data-i18n-html="footer.copyright">© 2026 Ömər Babayev · Mingəçevir, Azərbaycan. Bütün hüquqlar qorunur.</p>
+      <a href="https://internship.flyrank.ai/verify?id=FR-D1-3ACB9-5F7CD&amp;first_name=Omar" target="_blank" rel="noopener noreferrer" aria-label="Verify Omar Babayev's FlyRank AI Internship credential FR-D1-3ACB9-5F7CD" style="box-sizing:border-box;display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 13px;border:1px solid #DDE4E7;border-radius:9999px;background:#FFFFFF;color:#051F21;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;white-space:nowrap;max-width:100%;">
+        <span aria-hidden="true" style="display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:#051F21;color:#54E399;font-size:13px;line-height:1;">✓</span>
+        <span>FlyRank verified</span><span aria-hidden="true" style="width:1px;height:14px;background:#E4EAED;"></span><span style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;color:#1A7A4A;">FR-D1-3ACB9-5F7CD</span>
+      </a>
     </div>
   </div>
 </footer>
 
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
