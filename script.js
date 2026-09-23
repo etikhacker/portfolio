@@ -344,15 +344,14 @@ const translations = {
      visitor's OS-level preference on first visit.
      --------------------------------------------------------- */
   const themeButtons = document.querySelectorAll(".theme-btn");
-  const storedTheme = localStorage.getItem("portfolio-theme");
-  const prefersLight =
-    window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-  let currentTheme = storedTheme || (prefersLight ? "light" : "dark");
+  const storedTheme = localStorage.getItem("portfolio-theme-v2");
+  let currentTheme = storedTheme === "dark" ? "dark" : "light";
 
   function setTheme(theme) {
     if (theme !== "light" && theme !== "dark") theme = "dark";
     currentTheme = theme;
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("portfolio-theme-v2", theme);
     localStorage.setItem("portfolio-theme", theme);
     themeButtons.forEach((btn) => {
       btn.setAttribute("aria-pressed", String(btn.dataset.theme === theme));
