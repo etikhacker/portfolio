@@ -14,7 +14,7 @@ for (const page of pages) {
         ['Has footer-head', /<div class="footer-head">/.test(html)],
         ['Has footer-tagline', /data-i18n-html="footer\.tagline\.html"/.test(html)],
         ['Has footer-grid (3 cols)', (html.match(/<div class="footer-col">|class="footer-col"/g) || []).length >= 3],
-        ['Has 3 social links', (html.match(/class="social-link"/g) || []).length === 3],
+        ['Has social links', (html.match(/class="social-link"/g) || []).length >= 5],
         ['Has GitHub SVG', /M12 \.5C5\.37/.test(html)],
         ['Has LinkedIn SVG', /M20\.447 20\.452/.test(html)],
         ['Has Email SVG', /M20 4H4c-1\.1 0/.test(html)],
@@ -46,8 +46,8 @@ if (!ok) allOk = false;
 console.log(`  ${ok ? '✓' : '✗'} Old "footer.html" key removed`);
 
 console.log('\n=== script.js (EN keys) ===');
-const enMatch = js.match(/en:\s*\{[\s\S]*?\n\s*\}\n\s*\};/);
-const enBlock = enMatch ? enMatch[0] : '';
+const enStart = js.search(/(^|\n)\s*en:\s*\{/m);
+const enBlock = enStart < 0 ? '' : js.slice(enStart);
 for (const k of azKeys) {
     const o = enBlock.includes(`"${k}":`);
     if (!o) allOk = false;
