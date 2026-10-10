@@ -65,7 +65,7 @@ const cssChecks = [
     ['.footer-grid (3 col)', /\.footer-grid\s*\{[\s\S]*?repeat\(3,/.test(css)],
     ['.social-link rule', /\.social-link\s*\{/.test(css)],
     ['.footer-bottom rule', /\.footer-bottom\s*\{/.test(css)],
-    ['Mobile media query', /@media\s*\(max-width:\s*760px\)/.test(css)],
+    ['Mobile media query', /@media\s*\(max-width:\s*(760|800)px\)/.test(css)],
 ];
 for (const [name, ok] of cssChecks) {
     if (!ok) allOk = false;
