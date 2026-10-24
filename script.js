@@ -519,3 +519,104 @@ const translations = {
     });
   }
 })();
+
+/* ---------------------------------------------------------
+   Scroll-reveal text animations
+   Every animated element is tagged from JS, so if scripting
+   is unavailable the page stays fully readable.
+   --------------------------------------------------------- */
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  document.documentElement.classList.add("js-anim");
+
+  /* Split the hero headline into masked lines so each line
+     rises on its own instead of the whole block moving as one. */
+  const heroH1 = document.querySelector(".hero-copy h1");
+  if (heroH1 && !heroH1.dataset.animSplit) {
+    heroH1.dataset.animSplit = "1";
+    heroH1.innerHTML = heroH1.innerHTML
+      .split(/<br\s*\/?>/i)
+      .map(function (chunk) {
+        return chunk.trim()
+          ? '<span class="anim-line"><span class="anim-line-inner">' + chunk + "</span></span>"
+          : "";
+      })
+      .join("");
+  }
+
+  const groups = [
+    { selector: ".hero-topline > *", type: "up" },
+    { selector: ".hero-kicker", type: "up" },
+    { selector: ".hero-copy h1", type: "fade" },
+    { selector: ".hero-intro", type: "up" },
+    { selector: ".hero-actions .pill", type: "up" },
+    { selector: ".hero-socials a", type: "up" },
+    { selector: ".portrait-frame", type: "up" },
+    { selector: ".band-stat", type: "up" },
+    { selector: ".band-copy h2", type: "clip" },
+    { selector: ".about-heading .eyebrow", type: "up" },
+    { selector: ".about-heading h2", type: "clip" },
+    { selector: ".about-copy p", type: "up" },
+    { selector: ".about-copy .text-link", type: "up" },
+    { selector: ".section-intro .eyebrow", type: "up" },
+    { selector: ".section-intro h2", type: "clip" },
+    { selector: ".section-intro > p", type: "up" },
+    { selector: ".editorial-project", type: "up" },
+    { selector: ".view-all", type: "up" },
+    { selector: ".service-title .eyebrow", type: "up" },
+    { selector: ".service-title h2", type: "clip" },
+    { selector: ".service-list > div", type: "up" },
+    { selector: ".contact-band .eyebrow", type: "up" },
+    { selector: ".contact-band h2", type: "clip" },
+    { selector: ".contact-band .pill", type: "up" },
+    { selector: ".hero-role", type: "up" },
+    { selector: "#page-heading", type: "clip" },
+    { selector: ".tagline", type: "up" },
+    { selector: ".proj", type: "up" },
+    { selector: ".direct-contact", type: "up" },
+    { selector: ".form-group", type: "up" },
+    { selector: "#contact-form button[type=submit]", type: "up" },
+    { selector: ".footer-logo", type: "up" },
+    { selector: ".footer-tagline", type: "up" },
+    { selector: ".footer-col", type: "up" }
+  ];
+
+  const seen = new Set();
+  const targets = [];
+
+  groups.forEach(function (group) {
+    document.querySelectorAll(group.selector).forEach(function (el) {
+      if (seen.has(el)) return;
+      seen.add(el);
+      el.setAttribute("data-anim", group.type);
+      targets.push(el);
+    });
+  });
+
+  /* Stagger siblings so related elements cascade instead of
+     appearing all at once. */
+  const counters = new Map();
+  targets.forEach(function (el) {
+    const parent = el.parentElement;
+    const index = counters.get(parent) || 0;
+    counters.set(parent, index + 1);
+    el.style.setProperty("--anim-delay", Math.min(index, 6) * 80 + "ms");
+  });
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("anim-in");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+
+  targets.forEach(function (el) {
+    observer.observe(el);
+  });
+})();
