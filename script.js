@@ -527,7 +527,11 @@ const translations = {
    --------------------------------------------------------- */
 (function () {
   if (!("IntersectionObserver" in window)) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  /* Respect the OS "reduce motion" preference. The ?animate query flag
+     forces the animation on for testing. */
+  const forceAnimation = /[?&]animate\b/.test(window.location.search);
+  if (!forceAnimation && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   document.documentElement.classList.add("js-anim");
 
@@ -605,18 +609,63 @@ const translations = {
     el.style.setProperty("--anim-delay", Math.min(index, 6) * 80 + "ms");
   });
 
+  /* A clipped element reports an empty intersection rect, so it can
+     never trigger its own observer callback. Clip-animated elements are
+     therefore watched through their parent instead. */
+  const watched = new Map();
+
+  function watch(element, revealTarget) {
+    if (!watched.has(element)) watched.set(element, []);
+    watched.get(element).push(revealTarget);
+  }
+
+  targets.forEach(function (el) {
+    const type = el.getAttribute("data-anim");
+    const observerTarget = type === "clip" ? el.parentElement : el;
+    if (!observerTarget) return;
+    watch(observerTarget, el);
+  });
+
   const observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("anim-in");
+        (watched.get(entry.target) || []).forEach(function (el) {
+          el.classList.add("anim-in");
+        });
         observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
   );
 
-  targets.forEach(function (el) {
-    observer.observe(el);
+  watched.forEach(function (revealTargets, element) {
+    observer.observe(element);
   });
+
+  /* Safety net: reveal anything that is already on screen, even if the
+     observer never fired for it. Guarantees text is never stuck hidden. */
+  let scheduled = false;
+
+  function revealOnScreen() {
+    scheduled = false;
+    const viewport = window.innerHeight || document.documentElement.clientHeight;
+    targets.forEach(function (el) {
+      if (el.classList.contains("anim-in")) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewport * 0.95 && rect.bottom > 0) el.classList.add("anim-in");
+    });
+  }
+
+  function scheduleReveal() {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(revealOnScreen);
+  }
+
+  window.addEventListener("scroll", scheduleReveal, { passive: true });
+  window.addEventListener("resize", scheduleReveal);
+  window.addEventListener("load", scheduleReveal);
+  setTimeout(scheduleReveal, 400);
+  scheduleReveal();
 })();
