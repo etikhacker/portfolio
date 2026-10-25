@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body data-page="projects">
 <div class="site-shell">
@@ -67,7 +67,7 @@
     <h2 id="projects-list-heading" class="visually-hidden" data-i18n="projects.list.label">Layihələrin siyahısı</h2>
 
     <div class="proj-grid">
-    <article class="proj" aria-labelledby="proj-schedule-heading">
+    <article class="proj" id="schedule" aria-labelledby="proj-schedule-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-schedule-heading">E-Cədvəl / QrupTap</h3>
@@ -95,13 +95,13 @@
           <li>Next.js</li><li>Supabase</li><li>Tailwind CSS</li><li>PostgreSQL RLS</li>
         </ul>
         <div class="proj-foot">
-          <a href="https://intern-az.vercel.app" target="_blank" rel="noopener noreferrer" data-i18n-aria="link.live.aria.talora" aria-label="Talora layihəsinin canlı saytına keç (yeni pəncərədə açılır)"><span data-i18n="link.live">canlı sayt →</span></a>
+          <a href="https://talora-az.vercel.app" target="_blank" rel="noopener noreferrer" data-i18n-aria="link.live.aria.talora" aria-label="Talora layihəsinin canlı saytına keç (yeni pəncərədə açılır)"><span data-i18n="link.live">canlı sayt →</span></a>
           <a href="https://github.com/etikhacker/Talora.az" target="_blank" rel="noopener noreferrer" data-i18n-aria="link.github.aria.talora" aria-label="Talora layihəsinin GitHub reposuna keç (yeni pəncərədə açılır)"><span data-i18n="link.github">GitHub →</span></a>
         </div>
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-cityai-heading">
+    <article class="proj" id="cityai" aria-labelledby="proj-cityai-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-cityai-heading">CityAI</h3>
@@ -118,7 +118,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-ekoai-heading">
+    <article class="proj" id="ekoai" aria-labelledby="proj-ekoai-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-ekoai-heading">EkoAI</h3>
@@ -135,7 +135,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-promptr-heading">
+    <article class="proj" id="promptr" aria-labelledby="proj-promptr-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-promptr-heading">Promptr</h3>
@@ -151,7 +151,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-renthome-heading">
+    <article class="proj" id="renthome" aria-labelledby="proj-renthome-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-renthome-heading">RentHome</h3>
@@ -168,7 +168,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-techses-heading">
+    <article class="proj" id="techses" aria-labelledby="proj-techses-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>LIVE</span>
         <h3 id="proj-techses-heading">TechSəs · Voice Agent</h3>
@@ -185,7 +185,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-unpack-heading">
+    <article class="proj" id="unpack" aria-labelledby="proj-unpack-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>SHIP</span>
         <h3 id="proj-unpack-heading">Unpack — Concept Explainer</h3>
@@ -201,7 +201,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-atlas-heading">
+    <article class="proj" id="atlas" aria-labelledby="proj-atlas-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>SHIP</span>
         <h3 id="proj-atlas-heading">ATLAS — Desktop AI Agent</h3>
@@ -217,7 +217,7 @@
       </div>
     </article>
 
-    <article class="proj" aria-labelledby="proj-weather-heading">
+    <article class="proj" id="weather" aria-labelledby="proj-weather-heading">
       <div class="proj-head">
         <span class="status-badge live"><span class="dot" aria-hidden="true"></span>SHIP</span>
         <h3 id="proj-weather-heading">Weather Dashboard</h3>
@@ -297,6 +297,6 @@
 </footer>
 </div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>
